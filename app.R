@@ -108,7 +108,6 @@ server = function(input, output) {
       group_by(FL_DATE) %>%
       summarise(
         percent_delayed = if (input$showDelayed) sum(DEP_DELAY > 0) / n() * 100 else 0
-        # delete / n() ?
       )
     
     ggplot(delay_summary, aes(x = FL_DATE, y = percent_delayed)) +
@@ -124,7 +123,6 @@ server = function(input, output) {
       group_by(FL_DATE) %>%
       summarise(
         percent_cancelled = if (input$showCancelled) sum(CANCELLED == 1) / n() * 100 else 0
-        # delete / n() ?
       )
     
     ggplot(cancelled_summary, aes(x = FL_DATE, y = percent_cancelled)) +
